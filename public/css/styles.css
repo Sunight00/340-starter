@@ -9,19 +9,20 @@
 #top-header {
   display: flex;
   justify-content: space-between;
-  & .siteName, a{
+}
+
+
+.siteName a{
     font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
     color: black;
   }
-
-  & #tools a{
+#tools a{
     font-size: 1.2rem;
     text-decoration: none;
     color: black;
   }
-}
 
 nav ul{
   display: flex;
@@ -50,40 +51,19 @@ nav ul{
   gap: 1rem;
 
 }
-
-.upgrades{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  & div{
+.upgrades div{
     text-align: center;
     background-color: rgb(6, 127, 175);
-    padding: 1rem;
   }
-  & figure{
+.upgrades figure{
     text-align: center;
   }
-}
-
-#up1{
-  grid-column: 1/2;
-}
-#up2{
-  grid-column: 3/4;
-}
-#up3{
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
-#up4{
-  grid-column: 3/4;
-    grid-row: 2/3;
-}
 
 .upgrades-section{
   grid-column: 1/7;
 }
 #reviews{
-  grid-column: 7/13;
+  grid-column: 7/12;
 }
 
 
@@ -98,38 +78,46 @@ h1{
 .hero-text{
   position: absolute;
   top: 22%;
-    & h2, p {
+
+  }
+.hero-text h2{
     font-size: 0.8rem;
     color: rgb(6, 127, 175);
   }
+.hero-text p {
+    font-size: 0.8rem;
+    color: rgb(6, 127, 175);
   }
-
-
 .hero-text a{
   font-size: 1rem;
   text-decoration: none;
   color: rgb(0, 0, 0);
   background-color: rgb(6, 127, 175);
   padding: 0.5rem;
-}/*
+}
 #section{
-    flex-wrap: wrap ;
+  grid-template-columns: repeat(6,1fr);
 }
-#reviews{
-  order: 1;
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
-.upgrades-section{
-  order: 2;
-} 
-*/
+
+#up1{
+  grid-column:1/2 ;
+}
+#up2{
+  grid-column:2/3;
+}
+
 
 .upgrades-section{
   grid-row: 2/3;
-  grid-column: unset;
+  grid-column: 1/12;
 }
 #reviews{
   grid-row: 1/2;
-  grid-column: unset;
+  grid-column: 1/12;
 }
 }
 
@@ -143,11 +131,16 @@ h1{
   left: 10%;
   text-align: center;
   padding: 0 1rem 1.3rem 1rem ;
-  & h2, p {
+}
+
+.hero-text h2{
     font-size: 2rem;
     color: rgb(6, 127, 175);
   }
-}
+.hero-text p {
+    font-size: 2rem;
+    color: rgb(6, 127, 175);
+  }
 
 .hero-text a{
   font-size: 1.7rem;
@@ -155,5 +148,29 @@ h1{
   color: rgb(0, 0, 0);
   background-color: rgb(6, 127, 175);
   padding: 1rem;
+}
+
+
+
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.upgrades div{
+    padding: 1rem;}
+
+#up1{
+  grid-column: 1/2;
+}
+#up2{
+  grid-column: 3/4;
+}
+#up3{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+#up4{
+  grid-column: 3/4;
+    grid-row: 2/3;
 }
 }
