@@ -4,3 +4,42 @@
 *:after {
   box-sizing: border-box;
 }
+
+/*General*/
+#top-header, a{
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  & .siteName, a{
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  & #tools a{
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+}
+
+nav ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+
+/*small*/
+@media screen and(max-width: 600px) {
+
+}
+
+
+
+/*medium*/
+@media screen and(min-width: 601px) and(max-width: 2400px) {
+
+}
