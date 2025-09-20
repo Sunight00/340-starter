@@ -25,6 +25,8 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
+
+
 module.exports = Util
 
 
@@ -61,3 +63,35 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+
+Util.buildDetails = async function(data){
+  let detail = ''
+  if(data.length > 0){
+    data.forEach(info => { 
+      detail += `
+        <div class="vehicle-details">
+          <div class="card">
+            <h1>${info.inv_year} ${info.inv_make} ${info.inv_model}</h1>
+            <img src="${info.inv_thumbnail}" alt="Image of ${info.inv_year} ${info.inv_make} ${info.inv_model}" />
+            <div class="details">
+                <h2>${info.inv_make} ${info.inv_model} Details</h2>
+                <h2>Price: <span>${info.inv_price}</span></h2>
+                <h2>Description: <span>${info.inv_description}</span></h2>
+                <h2>Color: <span>${info.inv_color}</span></h2>
+            </div>
+          </div>
+        </div>
+      `})
+} else { 
+    detail += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return detail}
+
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next) 
