@@ -1,0 +1,173 @@
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+/*General*/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.siteName a{
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+  }
+#tools a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+  }
+
+nav ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.hero img{
+  width: 100%;
+}
+
+.hero-text{
+  background-color: rgba(255, 250, 250, 0.384);
+  padding: 0 1rem 1rem 1rem ;
+}
+
+
+#section{
+  /*display: flex;
+  justify-content: space-around;*/
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  gap: 1rem;
+
+}
+.upgrades div{
+    text-align: center;
+    background-color: rgb(6, 127, 175);
+  }
+.upgrades figure{
+    text-align: center;
+  }
+
+.upgrades-section{
+  grid-column: 1/7;
+}
+#reviews{
+  grid-column: 7/12;
+}
+/*DETAILS*/
+h2 span {
+  font-weight: normal; /* removes bold */
+  font-size: 1rem;     /* makes it smaller like paragraph */
+}
+/******/
+.hero-text a{
+  font-size: 1rem;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(6, 127, 175);
+  padding: 0.5rem;
+}
+
+/*small*/
+@media screen and (max-width:640px) {
+.siteName a, #tools a{
+    font-size: 1.2rem;
+}
+
+h1{
+  font-size: 1.3rem;
+
+}
+.hero-text{
+  position: absolute;
+  top: 25%;
+
+  }
+.hero-text h2{
+    font-size: 0.8rem;
+    color: rgb(6, 127, 175);
+  }
+.hero-text p {
+    font-size: 0.8rem;
+    color: rgb(6, 127, 175);
+  }
+  
+#section{
+  grid-template-columns: repeat(6,1fr);
+}
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+#up1{
+  grid-column:1/2 ;
+}
+#up2{
+  grid-column:2/3;
+}
+
+.upgrades-section{
+  grid-row: 2/3;
+  grid-column: 1/12;
+}
+#reviews{
+  grid-row: 1/2;
+  grid-column: 1/12;
+}
+
+/*TYPE PAGE*/
+#inv-display h2 {
+  font-size: 1rem;
+}
+#inv-display {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#inv-display li{
+  list-style: none;
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem; 
+  text-align: center;
+}
+#inv-display img{
+  width: 100%;
+  height: auto;
+}
+
+
+/*DETAIL PAGE*/
+.card {
+  margin: 0 1.5rem;
+}
+.card h2{
+  font-size: 1rem;
+}
+.card img{
+  width: 100%;
+  height: auto;
+}
+.vehicle-details {
+  text-align: center;
+}
+
+
+
+
+}
+

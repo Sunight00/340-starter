@@ -1,0 +1,127 @@
+@media screen and (min-width: 1025px){
+.hero-text{
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  text-align: center;
+  padding: 0 1rem 1.3rem 1rem ;
+}
+
+.hero-text h2{
+    font-size: 2rem;
+    color: rgb(6, 127, 175);
+  }
+.hero-text p {
+    font-size: 2rem;
+    color: rgb(6, 127, 175);
+  }
+
+.hero-text a{
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(6, 127, 175);
+  padding: 1rem;
+}
+
+
+
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.upgrades div{
+    padding: 1rem;}
+
+#up1{
+  grid-column: 1/2;
+}
+#up2{
+  grid-column: 3/4;
+}
+#up3{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+#up4{
+  grid-column: 3/4;
+    grid-row: 2/3;
+}
+/*TYPE PAGE*/
+#inv-display {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#inv-display li{
+  list-style: none;
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem; 
+  width: 20%;
+  text-align: center;
+}
+#inv-display img{
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+
+
+/*DETAIL PAGE*/
+.vehicle-details img{
+  width: 100%;
+  height: auto;
+}
+.card{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+.card h1{
+  grid-column: span 12;
+  grid-row: 1/2;
+}
+.card img{
+  grid-column: span 6;
+  grid-row: 2/3;
+  width: 100%;
+  height: auto;}
+
+.details{
+  grid-column: span 6;
+  grid-row: 2/3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

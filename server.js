@@ -33,9 +33,12 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 //app.use("/inv", inventoryRoute)
 app.use("/inv/", utilities.handleErrors(inventoryRoute))
+//app.use("/inv/type/", utilities.handleErrors(inventoryRoute))
 
 
-
+// Error routes for testing
+const errorRoute = require("./routes/error")
+app.use("/error", errorRoute)
 
 
 
