@@ -27,4 +27,4 @@ show_hide.addEventListener('click', () => {
   }})
 
 
-javascript:for(var f=document.forms,i=f.length;i--;)f[i].setAttribute("novalidate",i)
+//javascript:for(var f=document.forms,i=f.length;i--;)f[i].setAttribute("novalidate",i)
