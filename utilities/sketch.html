@@ -1,4 +1,14 @@
-        <div class="vehicle-details">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <script src="../public/js/script.js" defer></script>
+</head>
+<body>
+    <!--       <div class="vehicle-details">
             <h1>${info.inv_year} ${info.inv_make} ${info.inv_model}</h1>
             <img src="${info.inv_thumbnail}" alt="Image of ${info.inv_year} ${info.inv_make} ${info.inv_model}" />
             <div>
@@ -9,4 +19,30 @@
             </div>
         </div>
 
-make model  year description image thumbnail price miles color
+make model  year description image thumbnail price miles color --> 
+    <form class="login-form">
+        <label id="email">Email:<br><input id="email-input" type="email" name="account_email"></label><br>
+        <label id="password">Password:<br><input id="password-input" type="password" name="account_password"></label><br>
+        <button id="login-btn" type="submit">Login</button>
+        <p>No account? <a href="#">Sign up</a></p>
+    </form>
+<div id="reg-box">
+<div id="registration-form">
+<form id="registration-form-element">
+  <label>First name<br><input name="account_firstname" type="text" id="account_firstname" required></label><br>
+  <label>Last name<br><input name="account_lastname" type="text" id="account_lastname" required></label><br>
+  <label>Email<br><input name="account_email" type="text" id="account_email"></label><br>
+  <label>Password<br><input name="account_password" type="password" id="account_password"></label><br>
+  <!--<label>Confirm Password<br><input id="re_password" type="password"></label><br>-->
+  <!--<span id="message"></span><br>-->
+  <button id="show-hide">Show Password</button>
+  <button id="register-btn" type="submit">Register</button>
+</form>
+</div>
+</div>
+
+
+
+
+</body>
+</html>

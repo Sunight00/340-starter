@@ -80,7 +80,94 @@ h2 span {
   background-color: rgb(6, 127, 175);
   padding: 0.5rem;
 }
+/*LOGIN FORM*/
+.login-form{
+  border: 1px solid black;
+  max-width: fit-content;
+  padding: 1rem;
+}
 
+.login-form label{
+  display: block;
+}
+
+/*LOGIN FORM*/
+#reg-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#registration-form-element{
+  border: 1px solid black;
+  max-width: 300px;
+  padding: 1rem;
+}
+
+#registration-form-element label{
+  display: block;
+}
+
+#register-btn{
+  border-radius: 2rem;
+  border: none;
+  background-color: rgb(77, 211, 235);
+  padding: 0.5rem 0.5rem;
+}
+#register-btn:hover{
+  border-radius: 2rem;
+  border: 1px solid rgb(0, 0, 0);
+}
+#register-btn:hover{
+  cursor: pointer;
+  color: white;
+}
+
+input:user-invalid
+{
+  border: 2px solid red;
+  background-color: #ffe6e6;
+  outline: none;
+}
+
+input:required:valid {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+}
+
+/*FOR FLASH MESSAGES*/
+.notice{
+  list-style: none;
+  text-align: left;
+  border: solid 1px black;
+  max-width: fit-content;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.notice li{
+ text-align: left;
+}
+#asterisk{
+  color: red;
+}
+
+input{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tooltip {
+  display: none;
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.25rem;
+  line-height: 1.2;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+input:focus + .tooltip {
+  display: block;
+}
 /*small*/
 @media screen and (max-width:640px) {
 .siteName a, #tools a{
@@ -170,4 +257,18 @@ h1{
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
