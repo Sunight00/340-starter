@@ -1,3 +1,4 @@
+const { render } = require("ejs")
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
@@ -41,11 +42,47 @@ invCont.buildManagement = async function (req, res, next) {
 
 invCont.addClassification = async function (req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./inventory/add-classification", {title: "Add Classification", nav})
+  res.render("./inventory/add-classification", {title: "Add Classification", nav, errors: null})
 }
 
 invCont.addInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   res.render("./inventory/add-inventory", {title: "Add Inventory", nav})
 }
+
+
+
+
+invCont.displ = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    const { classification_name } = req.body
+    const addClass = await invModel.addClassification(classification_name)
+
+    if (addClass) {
+      req.flash(
+        "notice",
+        `${classification_name} has successfully been added.`
+      )
+      res.status(201).render("./inventory/management", {
+        title: "Management",
+        nav,
+      })
+    } else {
+      req.flash("notice", "Failed to add classification.")
+      res.status(500).render("./inventory/management", {
+        title: "Add Classification",
+        nav,
+      })
+    }
+  } catch (error) {
+    console.error("Error adding classification:", error.message)
+    next(error) // let Express handle the error
+  }
+}
+
+
+
+
+
 module.exports = invCont

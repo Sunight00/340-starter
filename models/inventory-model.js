@@ -39,4 +39,18 @@ async function getIdDetails(id){
     console.error("getIdDetails error " + error)
   }
 }
-module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails}
+
+
+/*ADDING CLASSIFICATION*/
+async function addClassification(classification_name) {
+  try {
+    const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *;"
+    const result = await pool.query(sql, [classification_name])
+    return result.rowCount
+  } catch (error) {
+    console.error("Error inserting classification:", error.message)
+    throw error
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails, addClassification}

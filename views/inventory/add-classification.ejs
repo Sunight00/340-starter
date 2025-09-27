@@ -1,0 +1,18 @@
+<h1><%= title %></h1>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><span id="asterisk">*</span>    <%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<% - messages() %>
+<form id="form-element" class="addClassification" action="/inv/add-classification" method="post">
+    <p>All fields are required</p>
+    <label>Classification Name<br><input name="classification_name" id="classification_name" type="text" required><span class="tooltip"><b>NAME MUST BE ALPHABETIC CHARACTERS ONLY</b></span></label><br>
+    <span id="classification-message"></span><br>
+    <button id="register-btn" type="submit">Add Classification</button>
+</form>
+
+
+<script src="/js/inventory.js" defer></script>

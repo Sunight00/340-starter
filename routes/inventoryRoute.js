@@ -2,6 +2,9 @@ const express = require("express")
 const router = new express.Router() 
 const invController = require("../controllers/invController")
 const static = require("../routes/static")
+const classificationValidate = require("../utilities/classification-validation")
+const utilities = require('../utilities/')
+
 
 router.use(static)
 /*For the Classification page*/
@@ -12,8 +15,9 @@ router.get("/detail/:id", invController.buildDetails);
 
 router.get("/add-classification", invController.addClassification);
 
-router.get("/add-inventory", invController.addInventory);
+router.get("/add-inventory", invController.addInventory, );
 
+router.post("/add-classification", classificationValidate.classificationRules(), classificationValidate.checkRegData, utilities.handleErrors(invController.displ));
 
 
 module.exports = router;
