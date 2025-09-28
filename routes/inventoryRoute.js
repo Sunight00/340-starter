@@ -17,7 +17,7 @@ router.get("/add-classification", invController.addClassification);
 
 router.get("/add-inventory", invController.addInventory, );
 
-router.post("/add-classification", classificationValidate.classificationRules(), classificationValidate.checkRegData, utilities.handleErrors(invController.displ));
+router.post("/add-classification", classificationValidate.classificationRules(), classificationValidate.checkRegData, utilities.handleErrors(invController.displayClassification));
 
 
 module.exports = router;

@@ -1,1 +1,44 @@
 <h1><%= title %></h1>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><span id="asterisk">*</span>    <%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<%- messages() %>
+
+
+
+
+
+
+<div id="reg-box">
+<div id="registration-form">
+<form id="form-element" action="/inv/add-inventory" method="post">
+<p>All fields are required</p>
+      <label for="classification_name">Classification<br>
+        <select id="classification_name" name="classification_name" required>
+          <option value="" disabled selected>Choose</option>
+          <% classification.rows.forEach(option => { %>
+            <option value="<%= option.classification_name %>">
+              <%= option.classification_name %>
+            </option>
+          <% }) %>
+        </select>
+      </label><br>
+
+    <label>Make<br><input name="inv_make" type="text" id="inv_make" required value="<%= locals.inv_make %>" placeholder="Min of three characters" minlength="3"></label><br>
+    <label>Model<br><input name="inv_model" type="text" id="inv_model" required value="<%= locals.inv_model %>" placeholder="Min of three characters" minlength="3"></label><br>
+    <label>Description<br><textarea id="inv_description" name="inv_description" required alue="<%= locals.inv_description %>"></textarea></label><br>
+    <label>Image Path<br><input name="inv_image" type="text" id="inv_image" required value="<%= locals.inv_image %>" ></label><br>
+    <label>Thumbnail Path<br><input name="inv_thumbnail" type="text" id="inv_thumbnail" required value="<%= locals.inv_thumbnail %>" ></label><br>
+    <label>Price<br><input name="inv_price" type="number" id="inv_price" required value="<%= locals.inv_price %>" placeholder="decimal or integer" ></label><br>
+    <label>Year<br><input name="inv_year" type="number" id="inv_year" required value="<%= locals.inv_year %>" placeholder="2025" min="1000" ></label><br>
+    <label>Miles<br><input name="inv_miles" type="number" id="inv_miles" required value="<%= locals.inv_miles %>" placeholder="Digits only" ></label><br>
+    <label>Color<br><input name="inv_color" type="text" id="inv_color" required value="<%= locals.inv_color %>" ></label><br>
+  <button id="register-btn" type="submit">Add Vehicle</button>
+</form>
+</div>
+</div>

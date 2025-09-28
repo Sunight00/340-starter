@@ -134,6 +134,13 @@ input:required:valid {
   background-color: #e6ffe6;
 }
 
+#inv_description{
+  width: 100%;
+}
+
+select {
+  width: 100%;
+}
 /*FOR FLASH MESSAGES*/
 .notice{
   list-style: none;

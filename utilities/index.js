@@ -25,6 +25,10 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
+Util.sendClassificationList = async function(){
+  let data = await invModel.getClassifications()
+  return data
+}
 
 
 module.exports = Util
