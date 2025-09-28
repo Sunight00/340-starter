@@ -72,7 +72,7 @@ invCont.displayClassification = async function (req, res, next) {
     } else {
       req.flash("notice", "Failed to add classification.")
       res.status(500).render("./inventory/management", {
-        title: "Add Classification",
+        title: "Management",
         nav,
       })
     }
@@ -83,7 +83,54 @@ invCont.displayClassification = async function (req, res, next) {
 }
 
 
+invCont.displayInventory = async function(req, res, next){
+  try{
+    let nav = await utilities.getNav()
+    const { classification_id,
+  inv_make,
+  inv_model,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_year,
+  inv_miles,
+  inv_color, } = req.body
+    let inventory = await invModel.addInventory(classification_id,
+  inv_make,
+  inv_model,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_year,
+  inv_miles,
+  inv_color,)
+  
+  if(inventory){
+        req.flash(
+        "notice",
+        `New inventory has been created`
+      ),
+      res.status(201).render("./inventory/management", {
+        title: "Management",
+        nav,
+      })
+  }
+  else{
+      req.flash("notice", "Failed to add classification.")
+      res.status(500).render("./inventory/management", {
+        title: "Management",
+        nav,
+      })
+  }
 
+  }
+  catch(error){
+        console.error("Error adding classification:", error.message)
+    next(error) // let Express handle the error
+  }
+}
 
 
 module.exports = invCont

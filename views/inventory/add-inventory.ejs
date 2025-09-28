@@ -11,18 +11,15 @@
 
 
 
-
-
-
 <div id="reg-box">
 <div id="registration-form">
 <form id="form-element" action="/inv/add-inventory" method="post">
 <p>All fields are required</p>
-      <label for="classification_name">Classification<br>
-        <select id="classification_name" name="classification_name" required>
+      <label for="classification_id">Classification<br>
+        <select id="classification_id" name="classification_id" required>
           <option value="" disabled selected>Choose</option>
           <% classification.rows.forEach(option => { %>
-            <option value="<%= option.classification_name %>">
+            <option value="<%= option.classification_id %>">
               <%= option.classification_name %>
             </option>
           <% }) %>
@@ -31,7 +28,7 @@
 
     <label>Make<br><input name="inv_make" type="text" id="inv_make" required value="<%= locals.inv_make %>" placeholder="Min of three characters" minlength="3"></label><br>
     <label>Model<br><input name="inv_model" type="text" id="inv_model" required value="<%= locals.inv_model %>" placeholder="Min of three characters" minlength="3"></label><br>
-    <label>Description<br><textarea id="inv_description" name="inv_description" required alue="<%= locals.inv_description %>"></textarea></label><br>
+    <label>Description<br><textarea id="inv_description" name="inv_description" minlength="5" required value="<%= locals.inv_description %>"></textarea></label><br>
     <label>Image Path<br><input name="inv_image" type="text" id="inv_image" required value="<%= locals.inv_image %>" ></label><br>
     <label>Thumbnail Path<br><input name="inv_thumbnail" type="text" id="inv_thumbnail" required value="<%= locals.inv_thumbnail %>" ></label><br>
     <label>Price<br><input name="inv_price" type="number" id="inv_price" required value="<%= locals.inv_price %>" placeholder="decimal or integer" ></label><br>
