@@ -5,11 +5,14 @@
 <body>
     <div id="wrapper">
         <%- include('../partials/header') %>
+        <div class="menu-toggle" id="toggle">&#9776;</div>
         <%- include('../partials/navigation') %>
     </div>
     <main>
         <%- body %>
     </main>
     <%- include('../partials/footer') %>
+
+    <script src="/js/nav.js" defer></script>
 </body>
 </html>

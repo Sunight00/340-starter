@@ -4,6 +4,14 @@
 *:after {
   box-sizing: border-box;
 }
+/*NAVIGATION RESPONSIVENESS*/
+.menu-toggle{
+  display: none;
+}
+
+
+
+
 a {
   text-decoration: none;
 }
@@ -177,6 +185,7 @@ input:focus + .tooltip {
 }
 /*small*/
 @media screen and (max-width:640px) {
+
 .siteName a, #tools a{
     font-size: 1.2rem;
 }
@@ -267,10 +276,36 @@ h1{
 
 
 
+@media screen and (max-width:400px){
+/*NAVIGATION RESPONSIVESS*/
+.menu-toggle{
+  display: block;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: larger;
+}
+#wrapper ul{
+  display: none;
+}
 
 
+#navLinks.active {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffcfc;
+  color: black;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10px;
+  top: 45px;
+  right: 0;
+  padding: 1rem;
+  min-width: 150px;
+  max-width: 90vw;
+  box-sizing: border-box;
+}
 
-
+}
 
 
 
