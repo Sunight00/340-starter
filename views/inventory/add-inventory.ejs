@@ -18,7 +18,7 @@
       <label for="classification_id">Classification<br>
         <select id="classification_id" name="classification_id" required>
           <option value="" disabled selected>Choose</option>
-          <% classification.rows.forEach(option => { %>
+          <% classificationSelect.rows.forEach(option => { %>
             <option value="<%= option.classification_id %>">
               <%= option.classification_name %>
             </option>

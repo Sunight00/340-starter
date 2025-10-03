@@ -101,6 +101,15 @@ async function addInventory(classification_id,
     return null
   }
 }
+ async function inventories() {
+  try {
+    const sql = "SELECT * FROM inventory"
+    const result = await pool.query(sql)
+    return result.rows
+  } catch (error) {
+    console.error("Error inserting classification:", error.message)
+    throw error
+  }
+ }
 
-
-module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails, addClassification, addInventory}
+module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails, addClassification, addInventory, inventories}

@@ -67,11 +67,14 @@ app.use("/account", utilities.handleErrors(accountRoute))
 
 // Inventory routes
 //app.use("/inv", inventoryRoute)
-app.use("/inv/", utilities.handleErrors(inventoryRoute))
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 //app.use("/inv/type/", utilities.handleErrors(inventoryRoute))
 
 
 
+
+//MY OWN FOR DOM INTERACTION
+app.use("/api", require("./routes/inventoryRoute"));
 
 
 

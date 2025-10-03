@@ -3,3 +3,24 @@
 <%- messages() %>
 <a href="/inv/add-classification">Add New Classification</a><br>
 <a href="/inv/add-inventory">Add New Vehicle</a>
+
+
+<h2>Manage Inventory</h2>
+<p>Select Classification From The List</p>
+<form id="form-element" action="/inv/" method="post">
+    <label for="classification_id">Classification<br>
+        <select id="classification_id" name="classification_id" required>
+          <option value="" disabled selected>Choose</option>
+          <% classification.rows.forEach(option => { %>
+            <option value="<%= option.classification_id %>">
+              <%= option.classification_name %>
+            </option>
+          <% }) %>
+        </select>
+      </label><br>
+</form>
+
+<table id="inventoryDisplay"></table>
+<ul id="s"></ul>
+<script src="/js/invManagement.js" defer></script>
+<noscript>JavaScript must be enabled to use this page.</noscript>

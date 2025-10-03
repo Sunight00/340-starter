@@ -37,7 +37,8 @@ invCont.buildDetails = async function (req, res, next) {
 /*BUILD MANAGEMENT VIEW*/
 invCont.buildManagement = async function (req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./inventory/management", {title: "Vehicle Management", nav})
+    classification = await utilities.sendClassificationList()
+  res.render("./inventory/management", {title: "Vehicle Management", nav, classification})
 }
 
 invCont.addClassification = async function (req, res, next) {
@@ -131,6 +132,21 @@ invCont.displayInventory = async function(req, res, next){
     next(error) // let Express handle the error
   }
 }
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+
+invCont.sendInventories = async function (req, res){
+  try{
+    const inventories = await  invModel.inventories()
+    res.json(inventories);
+    }
+  catch (err){
+    res.status(500).json({ error: "Failed to fetch classifications" });
+  }
+}
+
 
 
 module.exports = invCont
