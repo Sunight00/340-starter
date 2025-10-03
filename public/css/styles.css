@@ -91,7 +91,7 @@ h2 span {
 /*LOGIN FORM*/
 .login-form{
   border: 1px solid black;
-  max-width: fit-content;
+  max-width: 300px;
   padding: 1rem;
 }
 

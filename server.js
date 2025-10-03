@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -45,10 +46,12 @@ app.use(function(req, res, next){
   next()
 })
 
-
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 /* ***********************
  * Routes
  *************************/
@@ -58,15 +61,18 @@ app.use(static)
 //app.get("/",baseController.buildHome)
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
+
+// Account routes
+app.use("/account", utilities.handleErrors(accountRoute))
+
 // Inventory routes
 //app.use("/inv", inventoryRoute)
 app.use("/inv/", utilities.handleErrors(inventoryRoute))
 //app.use("/inv/type/", utilities.handleErrors(inventoryRoute))
 
 
-app.use("/account", utilities.handleErrors(accountRoute))
 
-app.use("/account", utilities.handleErrors(accountRoute))
+
 
 
 

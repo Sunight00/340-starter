@@ -6,8 +6,6 @@ const show_hide = document.getElementById('show-hide');
 
 
 
-
-
 form.addEventListener('submit', (event) => {
   if (password.value !== repassword.value) {
     event.preventDefault();
@@ -34,7 +32,7 @@ show_hide.addEventListener('click', (event) => {
 
 
 
-
+  
 
 
 
