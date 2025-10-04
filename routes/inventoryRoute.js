@@ -30,7 +30,7 @@ router.post("/add-classification", classificationValidate.classificationRules(),
 router.post("/add-inventory",inventoryValidation.registationRules(), inventoryValidation.checkRegData,      utilities.handleErrors(invController.displayInventory));
 
 //FOR UPDATING THE INVENTORY
-router.post("/update/", invController.updateInventory)
+router.post("/update/",inventoryValidation.checkUpdateData, invController.updateInventory)
 
 
 
