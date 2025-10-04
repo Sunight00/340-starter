@@ -89,6 +89,10 @@ h2 span {
   padding: 0.5rem;
 }
 /*LOGIN FORM*/
+.nn{
+  max-width: 150px;
+}
+
 .login-form{
   border: 1px solid black;
   max-width: 300px;

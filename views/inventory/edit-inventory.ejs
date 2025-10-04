@@ -13,12 +13,12 @@
 
 <div id="reg-box">
 <div id="registration-form">
-<form id="form-element" action="/inv/add-inventory" method="post">
+<form id="form-element" class="updateForm" action="/inv/update" method="post">
 <p>All fields are required</p>
       <label for="classification_id">Classification<br>
         <select id="classification_id" name="classification_id" required>
           <option value="" disabled selected>Choose</option>
-          <% classificationSelect.rows.forEach(option => { %>
+          <% classification.rows.forEach(option => { %>
             <option value="<%= option.classification_id %>">
               <%= option.classification_name %>
             </option>
@@ -35,7 +35,13 @@
     <label>Year<br><input name="inv_year" type="number" id="inv_year" required value="<%= locals.inv_year %>" placeholder="2025" min="1000" ></label><br>
     <label>Miles<br><input name="inv_miles" type="number" id="inv_miles" required value="<%= locals.inv_miles %>" placeholder="Digits only" ></label><br>
     <label>Color<br><input name="inv_color" type="text" id="inv_color" required value="<%= locals.inv_color %>" ></label><br>
-  <button id="register-btn" type="submit">Add Vehicle</button>
+  <button id="register-btn" type="submit" disabled>Update Vehicle</button>
+
+  <input type="hidden" name="inv_id"
+  <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+  <% } %>>
 </form>
 </div>
 </div>
+
+<script src="js/inv-update.js"

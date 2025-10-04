@@ -23,10 +23,14 @@ router.get("/add-classification", invController.addClassification);
 
 router.get("/add-inventory", invController.addInventory, );
 
+router.get("/edit/:inv_id", invController.editInventory )
+
 router.post("/add-classification", classificationValidate.classificationRules(), classificationValidate.checkRegData, utilities.handleErrors(invController.displayClassification));
 
 router.post("/add-inventory",inventoryValidation.registationRules(), inventoryValidation.checkRegData,      utilities.handleErrors(invController.displayInventory));
 
+//FOR UPDATING THE INVENTORY
+router.post("/update/", invController.updateInventory)
 
 
 

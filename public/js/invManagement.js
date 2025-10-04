@@ -33,5 +33,34 @@ async function o(){
 }
 o()
 
+/*
+ROUTE
+ router.get("/inventories",invController.sendInventories)
+
+CONTROLLER
+invCont.sendInventories = async function (req, res){
+  try{
+    const inventories = await  invModel.inventories()
+    res.json(inventories);
+    }
+  catch (err){
+    res.status(500).json({ error: "Failed to fetch classifications" });
+  }
+}
+
+SERVER
+app.use("/api", require("./routes/inventoryRoute"));
 
 
+MODEL
+ async function inventories() {
+  try {
+    const sql = "SELECT * FROM inventory"
+    const result = await pool.query(sql)
+    return result.rows
+  } catch (error) {
+    console.error("Error inserting classification:", error.message)
+    throw error
+  }
+ }
+*/

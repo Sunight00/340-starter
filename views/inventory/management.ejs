@@ -7,9 +7,9 @@
 
 <h2>Manage Inventory</h2>
 <p>Select Classification From The List</p>
-<form id="form-element" action="/inv/" method="post">
+
     <label for="classification_id">Classification<br>
-        <select id="classification_id" name="classification_id" required>
+        <select id="classification_id" class="nn" name="classification_id" required>
           <option value="" disabled selected>Choose</option>
           <% classification.rows.forEach(option => { %>
             <option value="<%= option.classification_id %>">
@@ -17,7 +17,6 @@
             </option>
           <% }) %>
         </select>
-      </label><br>
 </form>
 
 <table id="inventoryDisplay"></table>
