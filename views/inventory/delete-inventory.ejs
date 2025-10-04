@@ -1,0 +1,31 @@
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><span id="asterisk">*</span>    <%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<%- messages() %>
+
+
+
+<div id="reg-box">
+<div id="registration-form">
+<form id="form-element" class="updateForm" action="/inv/delete" method="post">
+  <p>CONFIRM DELETION: DELETION IS PERMANENT</p>
+    <label>Make<br><input name="inv_make" type="text" id="inv_make" required readonly value="<%= locals.inv_make %>" placeholder="Min of three characters" minlength="3"></label><br>
+    <label>Model<br><input name="inv_model" type="text" id="inv_model" required readonly value="<%= locals.inv_model %>" placeholder="Min of three characters" minlength="3"></label><br>
+    <label>Price<br><input name="inv_price" type="number" id="inv_price" required readonly value="<%= locals.inv_price %>" placeholder="decimal or integer" ></label><br>
+    <label>Year<br><input name="inv_year" type="number" id="inv_year" required readonly value="<%= locals.inv_year %>" placeholder="2025" min="1000" ></label><br>
+  <button id="register-btn" type="submit" class="btn">Delete Vehicle</button>
+
+  <input type="hidden" name="inv_id"
+  <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+  <% } %>>
+</form>
+</div>
+</div>
+
+

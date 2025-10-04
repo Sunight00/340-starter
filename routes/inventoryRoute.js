@@ -25,12 +25,17 @@ router.get("/add-inventory", invController.addInventory, );
 
 router.get("/edit/:inv_id", invController.editInventory )
 
+router.get("/delete/:inv_id", invController.deleteInventory )
+
 router.post("/add-classification", classificationValidate.classificationRules(), classificationValidate.checkRegData, utilities.handleErrors(invController.displayClassification));
 
 router.post("/add-inventory",inventoryValidation.registationRules(), inventoryValidation.checkRegData,      utilities.handleErrors(invController.displayInventory));
 
 //FOR UPDATING THE INVENTORY
 router.post("/update/",inventoryValidation.checkUpdateData, invController.updateInventory)
+
+//FOR UPDATING THE INVENTORY
+router.post("/delete/", invController.deletedInventory)
 
 
 
