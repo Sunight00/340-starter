@@ -40,6 +40,7 @@ const accountRoute = require("./routes/accountRoute")
   name: 'sessionId',
 }))
 
+//CHECKS IF USER IN LOGGED IN OR NOT
 app.use((req, res, next) => {
   res.locals.loggedin = req.session.loggedin || false
   next()

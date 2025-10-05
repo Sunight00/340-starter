@@ -9,7 +9,7 @@ const utilities = require('../utilities/')
 
 router.use(static)
 /*For the Classification page*/
-router.get("/", invController.buildManagement);
+router.get("/",utilities.accountData, invController.buildManagement);
 
 //WORKS WITH A JS FILE INVMANAGEMENT FOR REQUESTING A JSON
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
@@ -19,9 +19,9 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 /*For the detail page*/
 router.get("/detail/:id", invController.buildDetails);
 
-router.get("/add-classification", invController.addClassification);
+router.get("/add-classification",utilities.accountData, invController.addClassification);
 
-router.get("/add-inventory", invController.addInventory, );
+router.get("/add-inventory",utilities.accountData, invController.addInventory, );
 
 router.get("/edit/:inv_id", invController.editInventory )
 

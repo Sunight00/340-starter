@@ -167,6 +167,62 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+
+// Middleware to check and decode JWT
+Util.accountData = (req, res, next) => {
+  const token = req.cookies.jwt
+  if (!token) {
+    console.log("❌ No token found.")
+    res.locals.loggedin = false
+    return next()
+  }
+
+  try {
+    console.log("🔍 Token found, decoding...")
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+
+    // Store decoded user info for easy access
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+
+    if (decoded.account_type === "Employee" || decoded.account_type === "Admin") {
+      next()
+    } else {
+      req.flash("notice", "You do not have permission to access that page.")
+      return res.redirect("/")
+    }
+  } catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    //res.clearCookie("jwt")
+    //res.locals.loggedin = false
+    next()
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
