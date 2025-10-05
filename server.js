@@ -39,6 +39,12 @@ const accountRoute = require("./routes/accountRoute")
   saveUninitialized: true,
   name: 'sessionId',
 }))
+
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false
+  next()
+})
+
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
@@ -52,6 +58,8 @@ app.set("layout", "./layouts/layout") // not at views root
 
 app.use(cookieParser())
 app.use(utilities.checkJWTToken)
+
+
 /* ***********************
  * Routes
  *************************/
@@ -134,8 +142,6 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
-
-
 
 
 

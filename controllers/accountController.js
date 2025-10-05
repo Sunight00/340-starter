@@ -62,7 +62,7 @@ accountController.accountLogin = async function (req, res) {
       }
       //return res.redirect("/account/")
       res.status(201).render("account/management", {
-      title: "account",
+      title: "Account Management",
       nav,
     })
     }
