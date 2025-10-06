@@ -14,6 +14,8 @@ router.get("/register",utilities.handleErrors(accountController.buildRegister))
 
 router.get("/update", utilities.checkLogin, utilities.handleErrors(accountController.updateView))
 
+router.get("/logout", utilities.handleErrors(accountController.accountLogout))
+
 
 
 // Process the login attempt

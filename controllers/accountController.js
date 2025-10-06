@@ -207,10 +207,13 @@ accountController.changePassword = async function (req, res) {
       inventoryLink: null,
     })
   }
-
 }
-
-
+accountController.accountLogout = async function (req, res) {
+  let nav = await utilities.getNav()  
+  req.flash("notice", "You have been logged out.")
+  res.clearCookie("jwt")
+   res.status(201).redirect("/")
+  }
 
 
 module.exports = accountController 

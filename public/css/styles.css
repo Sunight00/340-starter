@@ -196,7 +196,9 @@ input:focus + .tooltip {
 
 h1{
   font-size: 1.3rem;
-
+}
+.tools a{
+  font-size: 0.8rem;
 }
 .hero-text{
   position: absolute;

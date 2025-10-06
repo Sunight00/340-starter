@@ -272,6 +272,28 @@ Util.iD = (req, res, next) => {
 
 
 
+// Middleware to check and decode JWT
+Util.loggout = (req, res, next) => {
+  const token = req.cookies.jwt
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    console.log("🔍 Token found, decoding...")
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+
+    res.clearCookie("jwt")
+    res.locals.loggedin = false
+  } catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    res.clearCookie("jwt")
+    res.locals.loggedin = false
+    next()
+  }
+}
+
+
+
 
 
 
