@@ -1,28 +1,14 @@
-    const passwor = document.getElementById('account_password');
-const forM = document.querySelector('.form-element');
-const show_hid = document.getElementById('show-Hide');
+const passwordField = document.getElementById('account_password');
+const showHide = document.getElementById('show-Hide');
 
+showHide.addEventListener('click', (event) => {
+  event.preventDefault();
 
-
-
-show_hid.addEventListener('click', (event) => {
-  if (password.type ===   'password') {
-    passwor.setAttribute('type', 'text');
-    show_hid.textContent = 'Hide Password';
-    event.preventDefault();
+  if (passwordField.type === 'password') {
+    passwordField.type = 'text';
+    showHide.textContent = 'Hide Password';
+  } else {
+    passwordField.type = 'password';
+    showHide.textContent = 'Show Password';
   }
-  else{
-    passwor.setAttribute('type', 'password');
-    show_hid.textContent = 'Show Password';
-    event.preventDefault(); 
-  }})
-
-
-
-
-  
-
-
-
-
-//javascript:for(var f=document.forms,i=f.length;i--;)f[i].setAttribute("novalidate",i)
+});
