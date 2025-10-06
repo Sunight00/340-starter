@@ -134,6 +134,22 @@ h2 span {
   color: white;
 }
 
+/*FOR THE UPATE CHANGE PASSWORD FORM*/
+#register-bt{
+  border-radius: 2rem;
+  border: none;
+  background-color: rgb(77, 211, 235);
+  padding: 0.5rem 0.5rem;
+}
+#register-bt:hover{
+  border-radius: 2rem;
+  border: 1px solid white;
+}
+#register-bt:hover{
+  cursor: pointer;
+  color: white;
+}
+
 input:user-invalid
 {
   border: 2px solid red;
