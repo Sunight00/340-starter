@@ -163,12 +163,12 @@ accountController.updateView = async function (req, res, next) {
  
 accountController.updateAccount = async function (req, res) {
   let nav = await utilities.getNav()
-  const { account_firstname, account_lastname, account_email, account_id } = req.body
+  const { account_firstname, account_lastname, account_email, account_password, account_id } = req.body
 
   const updated = await accountModel.updateAccount(account_firstname, account_lastname, account_email, account_id)
   try{
   if (updated) {
-    req.flash("notice", `Your account has been successfully updated.`)
+    req.flash("notice", `Your account has been successfully updated relogin.`)
     res.status(201).render("account/management", {
       title: "Account Management",
       nav,
@@ -192,7 +192,7 @@ accountController.updateAccount = async function (req, res) {
   }
 }
 
-/* CHANGE PASSWORD*/
+/* CHANGE PASSWORD
 accountController.changePassword = async function (req, res) {
   let nav = await utilities.getNav()  
   const { account_password, account_id } = req.body
@@ -207,7 +207,11 @@ accountController.changePassword = async function (req, res) {
       inventoryLink: null,
     })
   }
-}
+}*/
+
+
+
+/*LOGOUT*/
 accountController.accountLogout = async function (req, res) {
   let nav = await utilities.getNav()  
   req.flash("notice", "You have been logged out.")
