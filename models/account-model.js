@@ -45,16 +45,17 @@ accountModel.getAccountByEmail = async function  (account_email) {
 /* *****************************
 * UPATES ACCOUNT INFORMATION
 * ***************************** */
-accountModel.updateAccount = async function (account_firstname, account_lastname, account_email) {
+accountModel.updateAccount = async function (account_firstname, account_lastname, account_email,account_id) {
   try {
     const sql = `
       UPDATE public.account
       SET account_firstname = $1,
-          account_lastname = $2
-      WHERE account_email = $3
+          account_lastname = $2,
+          account_email = $3
+      WHERE account_id = $4
       RETURNING *;
     `
-    const result = await pool.query(sql, [account_firstname, account_lastname, account_email])
+    const result = await pool.query(sql, [account_firstname, account_lastname, account_email, account_id])
     return result.rows[0]
   } catch (error) {
     console.error("Database update error:", error)
@@ -62,6 +63,21 @@ accountModel.updateAccount = async function (account_firstname, account_lastname
   }
 }
 
+accountModel.updateAccount = async function (account_password, account_id) {
+  try {
+    const sql = `
+      UPDATE public.account
+      SET account_password = $1
+      WHERE account_id = $2
+      RETURNING *;
+    `
+    const result = await pool.query(sql, [account_password, account_id])
+    return result.rows[0]
+  } catch (error) {
+    console.error("Database update error:", error)
+    throw new Error("Failed to change password")
+  }
+}
 
 
 

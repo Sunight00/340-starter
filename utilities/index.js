@@ -200,8 +200,74 @@ Util.accountData = (req, res, next) => {
     next()
   }
 }
+Util.fName = (req, res, next) => {
+  const token = req.cookies.jwt
+  try {
+    console.log("🔍 Token found, decoding...")
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+    next()
+    return decoded.account_firstname 
+    } 
+   catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    next()
+  }
+}
 
+Util.lName = (req, res, next) => {
+  const token = req.cookies.jwt
+  try {
+    console.log("🔍 Token found, decoding...")
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+    next()
+    return decoded.account_lastname
+    } 
+   catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    next()
+  }
+}
 
+Util.email = (req, res, next) => {
+  const token = req.cookies.jwt
+  try {
+    console.log("🔍 Token found, decoding...")
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+    next()
+    return decoded.account_email
+    } 
+   catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    next()
+  }
+}
+
+Util.iD = (req, res, next) => {
+  const token = req.cookies.jwt
+  try {
+    console.log("🔍 Token found, decoding...")
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    res.locals.loggedin = true
+    res.locals.accountData = decoded
+    req.accountData = decoded
+    
+    next()
+    return decoded.account_id
+    } 
+   catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    next()
+  }
+}
 
 
 

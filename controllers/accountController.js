@@ -141,26 +141,32 @@ accountController.registerAccount = async function (req, res) {
 
 
 
-accountController.updateView = async function (req, res) {
+accountController.updateView = async function (req, res, next) {
   let nav = await utilities.getNav()
   //const account_id = req.accountData.account_id
   //const accountData = await accountModel.getAccountById(account_id)
+  const account_firstname  = await utilities.fName(req, res, next)
+  const account_lastname  = await utilities.lName(req, res, next)
+  const account_email  = await utilities.email(req, res, next)
+  const account_id  = await utilities.iD(req, res, next)
 
   res.render("account/update", {
     title: "Update Account",
     nav,
     errors: null,
-    account_firstname: null,
-    account_lastname: null,
-    account_email: null
+    account_firstname: account_firstname,
+    account_lastname: account_lastname,
+    account_email: account_email,
+    account_id: account_id
   })
 }
  
 accountController.updateAccount = async function (req, res) {
   let nav = await utilities.getNav()
-  const { account_firstname, account_lastname, account_email } = req.body
+  const { account_firstname, account_lastname, account_email, account_id } = req.body
 
-  const updated = await accountModel.updateAccount(account_firstname, account_lastname, account_email)
+  const updated = await accountModel.updateAccount(account_firstname, account_lastname, account_email, account_id)
+  try{
   if (updated) {
     req.flash("notice", `Your account has been successfully updated.`)
     res.status(201).render("account/management", {
@@ -181,8 +187,28 @@ accountController.updateAccount = async function (req, res) {
       account_email: account_email
     })
   }
+} catch (error) {
+    throw new Error('Access Forbidden')
+  }
 }
 
+/* CHANGE PASSWORD*/
+accountController.changePassword = async function (req, res) {
+  let nav = await utilities.getNav()  
+  const { account_password, account_id } = req.body
+  const ch = await accountModel.changePassword(account_password,account_id)
+  if (ch) {
+        req.flash("notice", `Your password has been successfully updated.`)
+    res.status(201).render("account/management", {
+      title: "Account Management",
+      nav,
+      inventory: null,
+      firstName: account_firstname, 
+      inventoryLink: null,
+    })
+  }
+
+}
 
 
 

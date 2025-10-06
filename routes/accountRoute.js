@@ -35,5 +35,9 @@ router.post(
   "/update",regValidate.UpdateRules(),regValidate.checkUpdate, utilities.handleErrors(accountController.updateAccount)
 )
 
+router.post(
+  "/update",regValidate.passwordRules(),regValidate.checkPassword, utilities.handleErrors(accountController.changePassword)
+)
+
 
 module.exports = router
