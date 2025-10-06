@@ -63,7 +63,7 @@ accountModel.updateAccount = async function (account_firstname, account_lastname
   }
 }
 
-accountModel.updateAccount = async function (account_password, account_id) {
+accountModel.changePassword = async function (account_password, account_id) {
   try {
     const sql = `
       UPDATE public.account
