@@ -1,5 +1,4 @@
-<h1><%= title %></h1>
-
+<h2>EDIT ACCOUNT</h2>
 <% if (errors) { %>
   <ul class="notice">
  <% errors.array().forEach(error => { %>
@@ -7,25 +6,24 @@
 <%  }) %>
  </ul>
 <% } %>
-<%- messages() %>
 
 
+<% - messages() %>
 
-<div id="reg-box">
-<div id="registration-form">
-<form class="form-element" action="/account/register" method="post">
+
+<form class="form-element" action="/account/update" method="post">
 <p>All fields are required</p>
   <label>First name<br><input name="account_firstname" type="text" id="account_firstname" required value="<%= locals.account_firstname %>"></label><br>
   <label>Last name<br><input name="account_lastname" type="text" id="account_lastname" required value="<%= locals.account_lastname %>"></label><br>
   <label>Email<br><input name="account_email" type="email" id="account_email" required placeholder="Enter a valid email address" value="<%= locals.account_email %>"></label><br>
-
-    <label>Password<br><input name="account_password" type="password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><span class="tooltip">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
-    </label>
-
-  <label>Confirm Password<br><input id="re_password" type="password"><span class="tooltip">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span></label><br>
-  <span id="message"></span><br>
-  <button id="show-hide">Show Password</button>
-  <button id="register-btn" type="submit">Register</button>
+    <button id="register-btn" type="submit">Update</button>
 </form>
-</div>
-</div>
+<br>
+<h4>UPDATE PASSWORD</h4>
+<p>NOTE YOUR ORIGINAL PASSWORD WOULD BE CHANGED</p>
+<form class="form-element">
+    <label>Password<br><input name="account_password" type="password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><span class="tooltip">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+    </label><br>
+    <button id="show-hide">Show Password</button>
+    <button id="register-btn" type="submit">Change Password</button>
+</form>

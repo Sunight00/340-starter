@@ -4,6 +4,7 @@ const accountModel = require("../models/account-model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { render } = require("ejs")
+const Util = require("../utilities/")
 require("dotenv").config()
 /* ****************************************
 *  Deliver login view
@@ -61,11 +62,23 @@ accountController.accountLogin = async function (req, res) {
         res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
       }
       //return res.redirect("/account/")
+      if (accountData.account_type === "Employee" || accountData.account_type === "Admin") {
       res.status(201).render("account/management", {
       title: "Account Management",
       nav,
+      inventory: `<h3>INVENTORY MANAGEMENT</h3>`,
+      firstName: accountData.account_firstname,
+      inventoryLink: '<p><a href="/inv/">Inventory Management</a></p>'
     })
-    }
+    } else {
+      res.status(201).render("account/management", {
+      title: "Account Management",
+      nav,
+      inventory: null,
+      firstName: accountData.account_firstname, 
+      inventoryLink: null,
+    })
+    }}
     else {
       req.flash("message notice", "Please check your credentials and try again.")
       res.status(400).render("account/login", {
@@ -125,4 +138,53 @@ accountController.registerAccount = async function (req, res) {
     })
   }
 }
+
+
+
+accountController.updateView = async function (req, res) {
+  let nav = await utilities.getNav()
+  //const account_id = req.accountData.account_id
+  //const accountData = await accountModel.getAccountById(account_id)
+
+  res.render("account/update", {
+    title: "Update Account",
+    nav,
+    errors: null,
+    account_firstname: null,
+    account_lastname: null,
+    account_email: null
+  })
+}
+ 
+accountController.updateAccount = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { account_firstname, account_lastname, account_email } = req.body
+
+  const updated = await accountModel.updateAccount(account_firstname, account_lastname, account_email)
+  if (updated) {
+    req.flash("notice", `Your account has been successfully updated.`)
+    res.status(201).render("account/management", {
+      title: "Account Management",
+      nav,
+      inventory: null,
+      firstName: account_firstname, 
+      inventoryLink: null,
+    })
+  } else {
+    req.flash("notice", "Sorry, the update failed.")
+    res.status(501).render("account/update", {
+      title: "Update Account",
+      nav,
+      errors: null,
+      account_firstname: account_firstname,
+      account_lastname: account_lastname,
+      account_email: account_email
+    })
+  }
+}
+
+
+
+
+
 module.exports = accountController 

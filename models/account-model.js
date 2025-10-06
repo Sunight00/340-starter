@@ -40,4 +40,31 @@ accountModel.getAccountByEmail = async function  (account_email) {
     return new Error("No matching email found")
   }
 }
+
+
+/* *****************************
+* UPATES ACCOUNT INFORMATION
+* ***************************** */
+accountModel.updateAccount = async function (account_firstname, account_lastname, account_email) {
+  try {
+    const sql = `
+      UPDATE public.account
+      SET account_firstname = $1,
+          account_lastname = $2
+      WHERE account_email = $3
+      RETURNING *;
+    `
+    const result = await pool.query(sql, [account_firstname, account_lastname, account_email])
+    return result.rows[0]
+  } catch (error) {
+    console.error("Database update error:", error)
+    throw new Error("Failed to update account")
+  }
+}
+
+
+
+
+
 module.exports = accountModel
+

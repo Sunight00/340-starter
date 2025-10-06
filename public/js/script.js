@@ -1,7 +1,7 @@
 const password = document.getElementById('account_password');
 const repassword = document.getElementById('re_password');
 const message = document.getElementById('message');
-const form = document.getElementById('form-element');
+const form = document.querySelector('.form-element');
 const show_hide = document.getElementById('show-hide');
 
 

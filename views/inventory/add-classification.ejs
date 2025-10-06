@@ -7,7 +7,7 @@
  </ul>
 <% } %>
 <% - messages() %>
-<form id="form-element" class="addClassification" action="/inv/add-classification" method="post">
+<form class="form-element" class="addClassification" action="/inv/add-classification" method="post">
     <p>All fields are required</p>
     <label>Classification Name<br><input name="classification_name" id="classification_name" type="text" required <%= locals.classification_name %>><span class="tooltip"><b>NAME MUST BE ALPHABETIC CHARACTERS ONLY</b></span></label><br>
     <span id="classification-message"></span><br>

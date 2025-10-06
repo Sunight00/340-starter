@@ -180,11 +180,12 @@ Util.accountData = (req, res, next) => {
   try {
     console.log("🔍 Token found, decoding...")
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-
     // Store decoded user info for easy access
     res.locals.loggedin = true
     res.locals.accountData = decoded
     req.accountData = decoded
+    console.log("✅ User:", req.accountData.account_firstname)
+    console.log("🧩 Type:", req.accountData.account_type)
 
     if (decoded.account_type === "Employee" || decoded.account_type === "Admin") {
       next()
@@ -199,14 +200,6 @@ Util.accountData = (req, res, next) => {
     next()
   }
 }
-
-
-
-
-
-
-
-
 
 
 
