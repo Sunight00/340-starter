@@ -272,6 +272,38 @@ Util.iD = (req, res, next) => {
 
 
 
+
+/*CORRECT WAY*/
+Util.iD = (req) => {
+  const token = req.cookies.jwt
+  try {
+    if (!token) return null
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    return decoded.account_id
+  } catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    return null
+  }
+}
+
+Util.name = (req) => {
+  const token = req.cookies.jwt
+  try {
+    if (!token) return null
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    return decoded.account_firstname
+  } catch (error) {
+    console.error("⚠️ JWT verification failed:", error.message)
+    return null
+  }
+}
+
+
+
+
+
+
+
 // Middleware to check and decode JWT
 Util.loggout = (req, res, next) => {
   const token = req.cookies.jwt

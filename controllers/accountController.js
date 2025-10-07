@@ -163,7 +163,7 @@ accountController.updateView = async function (req, res, next) {
  
 accountController.updateAccount = async function (req, res) {
   let nav = await utilities.getNav()
-  const { account_firstname, account_lastname, account_email, account_password, account_id } = req.body
+  const { account_firstname, account_lastname, account_email, account_id } = req.body
 
   const updated = await accountModel.updateAccount(account_firstname, account_lastname, account_email, account_id)
   try{
@@ -192,22 +192,68 @@ accountController.updateAccount = async function (req, res) {
   }
 }
 
-/* CHANGE PASSWORD
-accountController.changePassword = async function (req, res) {
+
+accountController.passwordView = async function (req, res, next) {
+  console.log("change password")
+    const account_id = utilities.iD(req)
+    const account_name = utilities.name(req)
+
   let nav = await utilities.getNav()  
-  const { account_password, account_id } = req.body
-  const ch = await accountModel.changePassword(account_password,account_id)
-  if (ch) {
-        req.flash("notice", `Your password has been successfully updated.`)
-    res.status(201).render("account/management", {
-      title: "Account Management",
+    res.render("account/password", {
+      title: "Account Update",
       nav,
-      inventory: null,
-      firstName: account_firstname, 
-      inventoryLink: null,
+      errors: null,
+      firstname: account_name,
+      account_id: account_id
+    }
+  )
+}
+
+accountController.updatePassword = async function (req, res) {
+  let nav = await utilities.getNav()
+  const account_name = utilities.name(req)
+  const { account_password, account_id } = req.body
+  let hashedPassword 
+  try{
+    hashedPassword = await bcrypt.hashSync(account_password, 10)
+  }
+  catch(error){
+    req.flash("notice", 'Sorry, there was an error processing the password change.')
+    res.status(500).render("account/password", {
+      title: "Account Update",
+      nav,
+      errors: null,
+      firstname: account_name,
+      account_id: account_id
     })
   }
-}*/
+
+  const updated = await accountModel.changePassword(hashedPassword,account_id)
+  if (updated){
+       req.flash("notice", `${account_name} your password has been successfully updated`)
+        res.status(201).render("account/management", {
+      title: "Account Management",
+      nav,
+      firstName: account_name,
+      inventory: null,
+      inventoryLink: null,})
+  }
+  else{
+    req.flash("notice", "Sorry, the update failed.")
+    res.status(501).render("account/password", {
+      title: "Account Update",
+      nav,
+      errors: null,
+      account_id: account_id,
+      firstname: account_name,
+    })
+
+  }
+
+}
+
+/*const { account_password, account_id } = req.body
+  const ch = await accountModel.changePassword(account_password,account_id)*/
 
 
 

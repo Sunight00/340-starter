@@ -186,18 +186,18 @@ validate.checkUpdate = async (req, res, next) => {
 
 //check password
 validate.checkPassword = async (req, res, next) => {
-  const { account_firstname, account_lastname, account_email} = req.body
+  const { account_id} = req.body
+  const account_firstname = utilities.name(req)
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    res.render("account/update", {
+    res.render("account/password", {
       errors,
       title: "Update Account",
       nav,
-      account_firstname,
-      account_lastname,
-      account_email,
+      account_id:account_id,
+      firstname:account_firstname
     })
     return
   }
