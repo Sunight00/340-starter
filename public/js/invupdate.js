@@ -1,8 +1,10 @@
 
+const s = document.getElementById('s')
+s.innerHTML="sjsjsjsjjsjjss"
 const updateForm = document.querySelector(".updateForm")
 const updateBtn = document.querySelector(".btn")
 
 
-    updateForm.addEventListener("input", function () {
+    updateBtn.addEventListener("click", function () {
       updateBtn.removeAttribute("disabled")
     })
