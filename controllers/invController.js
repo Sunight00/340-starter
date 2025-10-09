@@ -311,7 +311,6 @@ invCont.deletedInventory = async function (req, res, next) {
 /* ***************************
  *  Return Inventory by Classification As JSON
  * ************************** */
-
 invCont.sendInventories = async function (req, res){
   try{
     const inventories = await  invModel.inventories()
@@ -323,5 +322,36 @@ invCont.sendInventories = async function (req, res){
 }
 
 
+
+
+invCont.feedback = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const inventories = await  invModel.inventories()
+
+  res.render("inventory/feedback", {
+    title: "Feedback", 
+    nav,
+    inventories: inventories
+  })
+}
+
+invCont.postFeedBack = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const {inventory_id, feedback_text } = req.body
+  console.log(inventory_id, feedback_text)
+  const inventories = await  invModel.inventories()
+  const posted = await  invModel.postFeedBack(feedback_text, inventory_id)
+  if (posted) {
+  req.flash("notice", "Thank you for your feedback!")
+  res.redirect("/")
+}
+  else{
+    req.flash("notice", "Failed to send feedback.")
+    res.status(500).render("inventory/feedback", {
+      title: "Feedback", 
+      nav,
+      inventories
+    })
+  }}
 
 module.exports = invCont

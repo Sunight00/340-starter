@@ -156,6 +156,16 @@ async function updateInventory(
 
 
 
+async function postFeedBack(fdk, inv_id) {
+  try {
+    const sql = 'INSERT INTO feedback (fbk, inv_id) VALUES ($1, $2)'
+    const data = await pool.query(sql, [fdk, inv_id])
+    return data
+  } catch (error) {
+    console.error("❌ Insert Feedback Error:", error.message)
+    throw new Error("Insert Feedback Error")
+  }
+}
 
 
 
@@ -182,4 +192,4 @@ async function updateInventory(
   }
  }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails, addClassification, addInventory, inventories, updateInventory, deleteInventoryItem}
+module.exports = {getClassifications, getInventoryByClassificationId, getIdDetails, addClassification, addInventory, inventories, updateInventory, deleteInventoryItem, postFeedBack}

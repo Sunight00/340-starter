@@ -7,8 +7,8 @@
 
 <h2>Manage Inventory</h2>
 <p>Select Classification From The List</p>
-
-    <label for="classification_id">Classification<br>
+<form>
+      <label for="classification_id">Classification<br>
         <select id="classification_id" class="nn" name="classification_id" required>
           <option value="" disabled selected>Choose</option>
           <% classification.rows.forEach(option => { %>

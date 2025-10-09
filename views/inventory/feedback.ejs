@@ -1,0 +1,18 @@
+<h1>Leave a feeback</h1>
+
+<form class="feedback_form" action="/inv/feedback" method="POST">
+      <label for="inventory_id">Inventory<br>
+        <select id="selectInv" name="inventory_id" required>
+          <option value="" disabled selected>Choose</option>
+          <% inventories.forEach(option => { %>
+            <option value="<%= option.inv_id %>">
+              <%= `${option.inv_make} ${option.inv_model}` %>
+            </option>
+          <% }) %>
+        </select>
+        </label><br><br>
+        <label for="feedback_text">Your Feedback:</label><br>
+        <textarea name="feedback_text" id="feedback_text" placeholder="Enter your feedback here..." required></textarea> <br>
+
+        <button id="register-btn" type="submit" class="btn">Send Feedback</button>
+</form>
